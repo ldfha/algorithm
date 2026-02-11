@@ -1,11 +1,7 @@
 N = int(input())
-count = 0
 start = '665'
-while N != count:
+while N != 0:
     start = str(int(start) + 1)
-    for i in range(len(start) - 2):
-        n = start[len(start)-3-i::]
-        if n.startswith('666'):
-            N -= 1
-            break
+    if "666" in start:
+        N-=1
 print(start)
