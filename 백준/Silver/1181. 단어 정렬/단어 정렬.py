@@ -1,8 +1,11 @@
+import sys
+input = sys.stdin.readline
+
 N = int(input())
 words = [[] for _ in range(51)]
 
 for _ in range(N):
-    word = input()
+    word = input().strip()
     if word not in words[len(word)]:
         words[len(word)].append(word)
 
