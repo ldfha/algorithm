@@ -28,16 +28,9 @@ int solution(const char *A, const char *B)
         {
             same = true;
             answer++;
-            break; // 두 문자열이 같으면 반복문 탈출
+            return answer;
         }
         answer++;
     }
-    if (same)
-    {
-        return answer;
-    }
-    else
-    {
-        return -1;
-    }
+    return -1;
 }
