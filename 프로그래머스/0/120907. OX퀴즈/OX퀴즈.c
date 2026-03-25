@@ -7,33 +7,16 @@
 char** solution(const char* quiz[], size_t quiz_len) {
     // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
     char** answer = (char**)malloc(sizeof(char*)*quiz_len);
+    int su1, su2, ans;
+    char op;
     for(int i=0; i<quiz_len; i++){
-        char* temp = malloc(sizeof(char)*strlen(quiz[i]));
-        strcpy(temp, quiz[i]);
-        char* s1 = strtok(temp, " ");
-        char* giho = strtok(NULL, " ");
-        char* s2 = strtok(NULL, " ");
-        strtok(NULL, " ");
-        char* as = strtok(NULL, " ");
-        int su1 = atoi(s1);
-        int su2 = atoi(s2);
-        int ans = atoi(as);
-
-        if(strcmp(giho, "-") == 0){
-            if(su1 - su2 == ans){
-                answer[i]="O";
-            }else {
-                answer[i]="X";
-            }
-        } else {
-            if(su1 + su2 == ans){
-                answer[i]="O";
-            }else {
-                answer[i]="X";
-            }
+        sscanf(quiz[i], "%d %c %d = %d", &su1, &op, &su2, &ans);
+        int result = (op == '+') ? su1+su2 : su1-su2;
+        if(result == ans){
+            answer[i]="O";
+        }else {
+            answer[i]="X";
         }
-        
-        free(temp);
     }
     return answer;
 }
