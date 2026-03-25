@@ -17,14 +17,20 @@ char* solution(const char* polynomial) {
             if(token[strlen(token)-1] != 'x') {
                 sangsu += atoi(token);
             } else {
-                char* su = malloc(strlen(token));
-                strncpy(su, token, strlen(token)-1);
-                su[strlen(token)-1] = '\0';
-                if(atoi(su)){
-                    gyesu += atoi(su);
-                } else{
+                if(strcmp(token, "x") == 0){
                     gyesu += 1;
+                } else {
+                    token[strlen(token)-1] = '\0';
+                    gyesu += atoi(token);
                 }
+                // char* su = malloc(strlen(token));
+                // strncpy(su, token, strlen(token)-1);
+                // su[strlen(token)-1] = '\0';
+                // if(atoi(su)){
+                //     gyesu += atoi(su);
+                // } else{
+                //     gyesu += 1;
+                // }
             }
         }
         token = strtok(NULL, " ");
